@@ -1,0 +1,46 @@
+#carousel {
+  max-height: 500px;
+}
+
+#carouselExampleFade {
+  object-fit: contain !important;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+.food img {
+  height: 20rem;
+  object-fit: cover;
+  border-top-left-radius: var(--mainBorderRadius);
+  border-top-right-radius: var(--mainBorderRadius);
+}
+
+.food-footer {
+  padding: 1.5rem;
+}
+
+.food-footer h3,
+.food-footer h4,
+.food-footer p {
+  margin-bottom: 0.3rem;
+}
+
+.food-footer h3 {
+  font-size: 2rem;
+}
+
+.food-footer p {
+  color: var(--darkGrey);
+  margin-bottom: 0.5rem;
+}
+
+
+
+
+/*Profile section  */
+/* Add this CSS in your external stylesheet or in a style tag in your React component */
+
+/* Styles for the profile section */
