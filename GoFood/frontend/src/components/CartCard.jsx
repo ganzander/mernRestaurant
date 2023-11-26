@@ -31,29 +31,44 @@ export default function CartCard(props) {
   }
 
   return (
-    <article className="card mt-3 food">
+    <article className="card mt-3 food" style={{ border: "5px solid #ecc00e" }}>
       <div className="img-container">
         <img src={props.foodItem.img} alt={props.foodItem.name} />
       </div>
-      <div className="food-footer">
+      <div className="food-footer text-center p-2">
         <h4>{props.foodItem.name}</h4>
       </div>
-      <div className="food-footer">
-        <h>{props.foodItem.description}</h>
-      </div>
-      <div className="food-footer">
-        <p className="text-center bg-success rounded" value={qty}>
+      <div className="container w-100">
+        <p
+          className="text-center rounded m-2 h-100 "
+          style={{ backgroundColor: "#ecc00e" }}
+          value={qty}
+        >
           Quantity: {qty}
         </p>
 
-        <p className="text-center bg-success rounded" value={size}>
+        <p
+          className="text-center rounded m-2 h-100 "
+          style={{ backgroundColor: "#ecc00e" }}
+          value={size}
+        >
           Size: {size}
         </p>
       </div>
-      <div className="d-inline h-100 mx-3 fs-5">₹{finalPrice}/-</div>
-      <hr />
+      <div className="d-inline h-100 fs-5 mt-2 mx-2 text-center">
+        ₹{finalPrice}/-
+      </div>
+      <div
+        className="my-3"
+        style={{
+          height: "1px",
+          borderRadius: "1.5px",
+          width: "100%",
+          backgroundColor: "#ecc00e",
+        }}
+      />
       <button
-        className="btn btn-success justify-center m-2 mb-4"
+        className="btn justify-center btn-danger m-2 mb-2"
         onClick={() => {
           deleteCartItem(props.foodItem);
         }}

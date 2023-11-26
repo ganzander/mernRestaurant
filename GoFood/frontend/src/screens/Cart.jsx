@@ -74,9 +74,7 @@ export default function Cart() {
   if (data.length !== 0) {
     return (
       <div>
-        <div>
-          <Navbar length={data.length} />
-        </div>
+        <Navbar length={data.length} />
         <div className="container">
           <div className="cart-heading d-flex justify-content-center align-items-center m-3 mt-2">
             <h1>Cart</h1>
@@ -85,7 +83,7 @@ export default function Cart() {
             {data.length !== 0 &&
               data.map((foodItem) => {
                 return (
-                  <div className="col-12 col-md-6 col-lg-3 " key={foodItem._id}>
+                  <div className="col-12 col-md-6 col-lg-3" key={foodItem._id}>
                     <CartCard
                       foodItem={foodItem}
                       key={foodItem.id}
@@ -97,11 +95,11 @@ export default function Cart() {
           </div>
 
           <div className="d-flex m-5 justify-content-center align-items center">
-            <button className="btn btn-success mx-3 " onClick={deleteCart}>
+            <button className="btn mx-3 btn-primary" onClick={deleteCart}>
               Empty Your Cart
             </button>
-            <button className="btn btn-success mx-3 " onClick={makePayment}>
-              Checkout
+            <button className="btn mx-3 btn-primary" onClick={makePayment}>
+              Proceed To Pay
             </button>
           </div>
         </div>

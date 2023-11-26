@@ -26,7 +26,7 @@ export default function MyOrder() {
           <Navbar />
         </div>
         <div className="container">
-          <div className="cart-heading d-flex justify-content-center align-items-center m-3 mt-2">
+          <div className="d-flex justify-content-center align-items-center m-3 mt-2">
             <h1>My Orders</h1>
           </div>
           <div>
@@ -67,7 +67,9 @@ export default function MyOrder() {
           <Navbar />
         </div>
         <div>
-          <h1>You have not ordered anything yet</h1>
+          <h1 className="d-flex justify-content-center align-items-center m-3 mt-2">
+            You have not ordered anything yet
+          </h1>
         </div>
       </>
     );

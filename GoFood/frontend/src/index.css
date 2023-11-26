@@ -18,9 +18,6 @@ img {
   border-top-right-radius: var(--mainBorderRadius);
 }
 
-.food-footer {
-  padding: 1.5rem;
-}
 
 .food-footer h3,
 .food-footer h4,
@@ -37,10 +34,9 @@ img {
   margin-bottom: 0.5rem;
 }
 
-
-
-
-/*Profile section  */
-/* Add this CSS in your external stylesheet or in a style tag in your React component */
-
-/* Styles for the profile section */
+.line {
+  height: 8px;
+  border-radius: 1.5px;
+  width: 100%;
+  background-color: #ecc00e;
+}

@@ -19,26 +19,36 @@ export default function OrderCard(props) {
   }
 
   return (
-    <article className="card mt-3 food">
+    <article className="card mt-3 food" style={{ border: "5px solid #ecc00e" }}>
       <div className="img-container">
         <img src={props.foodItem.img} alt={props.foodItem.name} />
       </div>
-      <div className="food-footer">
+      <div className="food-footer p-2 text-center">
         <h4>{props.foodItem.name}</h4>
       </div>
-      <div className="food-footer">
+      <div className="food-footer p-2 text-center">
         <p>{props.foodItem.description}</p>
       </div>
       <div className="container w-100">
-        <p className="text-center m-2 h-100 bg-success rounded" value={qty}>
+        <p
+          className="text-center m-2 h-100 rounded"
+          style={{ backgroundColor: "#ecc00e" }}
+          value={qty}
+        >
           Quantity: {qty}
         </p>
 
-        <p className="text-center m-2 h-100 bg-success rounded" value={size}>
+        <p
+          className="text-center m-2 h-100 rounded"
+          style={{ backgroundColor: "#ecc00e" }}
+          value={size}
+        >
           Size: {size}
         </p>
 
-        <div className="d-inline h-100 fs-5">₹{finalPrice}/-</div>
+        <div className="d-inline h-100 fs-5 mt-2 text-center">
+          ₹{finalPrice}/-
+        </div>
         <hr />
       </div>
     </article>

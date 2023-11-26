@@ -1,13 +1,19 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { Suspense, useState, useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Modal, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import Badge from "react-bootstrap/Badge";
+import Pizza from "../models/Pizza";
+import { OrbitControls, Stage } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
 import "./navbar.css";
+import { gsap } from "gsap";
 
 function Navbar(props) {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
+  const [sticky, setSticky] = useState(false);
+
   const userProfile = JSON.parse(localStorage.getItem("currentUser"));
 
   function handleLogout() {
@@ -21,31 +27,72 @@ function Navbar(props) {
     setIsOpen(!isOpen);
   }
 
+  function scrolling() {
+    console.log(window.scrollY);
+    if (window.scrollY >= 350) {
+      setSticky(true);
+    } else {
+      setSticky(false);
+    }
+  }
+  window.addEventListener("scroll", scrolling);
+
+  var pageload = gsap.timeline();
+  useEffect(() => {
+    pageload.to(".custom-navbar", {
+      y: 0,
+      duration: 0.5,
+    });
+
+    pageload.to(".logo-model", {
+      x: -100,
+      duration: 0.3,
+      ease: "expo.out",
+      delay: -1.2,
+    });
+    pageload.to(".logo-name", {
+      x: -100,
+      duration: 1.8,
+      ease: "bounce.out",
+      opacity: 1,
+    });
+    pageload.to(".logo-model", {
+      x: -120,
+      duration: 0.5,
+    });
+  }, []);
   return (
-    <nav id="nav" className="navbar navbar-expand-lg navbar-dark bg-success">
+    <nav
+      className={
+        "navbar custom-navbar navbar-expand-lg navbar-dark m-10 " +
+        (sticky ? "sticky" : "")
+      }
+      style={{ backgroundColor: "#ea5200" }}
+    >
       <div className="container-fluid ">
-        <Link className="navbar-brand fs-1 fst-italic" to="/">
-          GoFood
-        </Link>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav me-auto mb-2">
-            <li className="nav-item">
-              <Link className="nav-link active fs-5" aria-current="page" to="/">
-                Home
-              </Link>
-            </li>
-          </ul>
+        <div className="nav-left d-flex flex-row align-items-center">
+          <div className="logo-model ">
+            <Canvas>
+              <Stage environment="city" intensity={0.7}>
+                <Pizza />
+              </Stage>
+              <OrbitControls
+                enableZoom={false}
+                autoRotate={true}
+                autoRotateSpeed={3}
+              />
+            </Canvas>
+          </div>
+          <Link
+            className="navbar-brand fs-1 fst-italic font-weight-bold logo-name"
+            to="/"
+          >
+            Savor Haven
+          </Link>
+        </div>
+
+        <div className="nav-right collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav me-auto mb-2"></ul>
           {!localStorage.getItem("authToken") ? (
             <div className="d-flex">
               <ul>
@@ -63,7 +110,7 @@ function Navbar(props) {
           ) : (
             <div className="d-flex">
               <div className="profile-section">
-                <Link className="btn bg-white text-danger mx-2" to="/cart">
+                <Link className="btn bg-white text-danger mx-5" to="/cart">
                   Cart{" "}
                   <Badge pill bg="danger">
                     {props.length}

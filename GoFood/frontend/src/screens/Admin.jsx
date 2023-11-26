@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import Navbar from "../components/Navbar";
+import Footer from "./../components/Footer";
 
 export default function Admin() {
   const [foodDetails, setFoodDetails] = useState({
@@ -53,11 +54,14 @@ export default function Admin() {
         <div className="row">
           <div className="col-lg-12 col-md-12 col-sm-12">
             <div className="adminpanel">
-              <h1>Update the menu</h1>
+              <div className="d-flex justify-content-center align-items-center m-3 mt-2">
+                <h1>Update the menu</h1>
+              </div>
               <form onSubmit={addFoodItems}>
-                <div className="form-group">
+                <div className="form-group my-3 mt-3 my-3 mt-3">
                   <label htmlFor="CategoryName">Category Name</label>
                   <input
+                    style={{ border: "3px solid #ecc00e" }}
                     type="text"
                     className="form-control"
                     name="categoryName"
@@ -68,9 +72,10 @@ export default function Admin() {
                     autoComplete="off"
                   />
                 </div>
-                <div className="form-group">
+                <div className="form-group my-3 mt-3">
                   <label htmlFor="name">Name</label>
                   <input
+                    style={{ border: "3px solid #ecc00e" }}
                     type="text"
                     name="name"
                     className="form-control"
@@ -81,9 +86,10 @@ export default function Admin() {
                     autoComplete="off"
                   />
                 </div>
-                <div className="form-group">
+                <div className="form-group my-3 mt-3">
                   <label htmlFor="image">Image URL</label>
                   <input
+                    style={{ border: "3px solid #ecc00e" }}
                     type="text"
                     name="imgurl"
                     className="form-control"
@@ -94,9 +100,10 @@ export default function Admin() {
                     autoComplete="off"
                   />
                 </div>
-                <div className="form-group">
+                <div className="form-group my-3 mt-3">
                   <label htmlFor="description">Description</label>
                   <input
+                    style={{ border: "3px solid #ecc00e" }}
                     type="text"
                     name="description"
                     className="form-control"
@@ -107,9 +114,10 @@ export default function Admin() {
                     autoComplete="off"
                   />
                 </div>
-                <div className="form-group">
-                  <label htmlFor="options">options</label>
+                <div className="form-group my-3 mt-3">
+                  <label htmlFor="options">Options</label>
                   <input
+                    style={{ border: "3px solid #ecc00e" }}
                     type="text"
                     name="options"
                     className="form-control"
@@ -119,12 +127,17 @@ export default function Admin() {
                     onChange={onchange}
                     autoComplete="off"
                   />
-                  {<small>{<p> "meal":"180","single":"55" </p>}</small>}
+                  {
+                    <small>
+                      {<p> "regular":"70","medium":"100","large":"120" </p>}
+                    </small>
+                  }
                 </div>
-
-                <button type="submit" className="btn btn-primary">
-                  Submit
-                </button>
+                <div className="d-flex mt-3 justify-content-center align-items center">
+                  <button type="submit" className="btn btn-primary">
+                    Submit
+                  </button>
+                </div>
               </form>
             </div>
           </div>

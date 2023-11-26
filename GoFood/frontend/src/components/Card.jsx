@@ -37,19 +37,20 @@ export default function Card(props) {
   }, [qty, size]);
 
   return (
-    <article className="card mt-3 food">
+    <article className="card mt-3 food" style={{ border: "5px solid #ecc00e" }}>
       <div className="img-container">
         <img src={props.foodItem.img} alt={props.foodItem.name} />
       </div>
-      <div className="food-footer">
+      <div className="food-footer text-center p-2">
         <h4>{props.foodItem.name}</h4>
       </div>
-      <div className="food-footer">
+      <div className="food-footer text-center p-2">
         <p>{props.foodItem.description}</p>
       </div>
       <div className="container w-100">
         <select
-          className="m-2 h-100  bg-success rounded"
+          className="m-2 h-100 text-center rounded"
+          style={{ backgroundColor: "#ecc00e" }}
           value={qty}
           onChange={(e) => {
             setQty(e.target.value);
@@ -63,7 +64,8 @@ export default function Card(props) {
         </select>
 
         <select
-          className="m-2 h-100 bg-success rounded"
+          className="m-2 h-100 text-center rounded"
+          style={{ backgroundColor: "#ecc00e" }}
           value={size}
           onChange={(e) => {
             setSize(e.target.value);
@@ -78,10 +80,19 @@ export default function Card(props) {
           })}
         </select>
 
-        <div className="d-inline h-100 fs-5">₹{finalPrice}/-</div>
-        <hr />
+        <div className="d-inline h-100 fs-5 mx-3">₹{finalPrice}/-</div>
+        <div
+          className="my-3 "
+          style={{
+            height: "1px",
+            borderRadius: "1.5px",
+            width: "100%",
+            backgroundColor: "#ecc00e",
+          }}
+        />
+
         <button
-          className="btn btn-success justify-center m-2"
+          className="btn justify-center btn-success m-2 mb-2"
           onClick={() => {
             addNewCart(props.foodItem);
           }}

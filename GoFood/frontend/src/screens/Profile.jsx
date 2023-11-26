@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./../components/Navbar";
+import Footer from "./../components/Footer";
 import toast from "react-hot-toast";
 import axios from "axios";
 
@@ -120,8 +121,17 @@ function Profile() {
             <p className="d-flex justify-content-center align-items-center m-3 mt-2">
               {user.location}
             </p>
+            <div className="d-flex m-5 justify-content-center align-items center">
+              <button className="btn mx-3 btn-warning" onClick={ResetPassword}>
+                Reset your password
+              </button>
+              <button className="btn mx-3 btn-warning" onClick={InputPicture}>
+                Change your Avatar
+              </button>
+            </div>
             {changePassword ? (
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit} className="m-5">
+                <h5>Enter the following credentials</h5>
                 <div className="form-group m-3 mt-2">
                   <input
                     type="password"
@@ -160,11 +170,10 @@ function Profile() {
                   Submit
                 </button>
               </form>
-            ) : (
-              <button onClick={ResetPassword}>Reset your password</button>
-            )}
+            ) : null}
             {insertPic ? (
-              <form onSubmit={handlePicSubmit}>
+              <form onSubmit={handlePicSubmit} className="m-5">
+                <h5>Submit your photo</h5>
                 <div className="form-group m-3 mt-2">
                   <input
                     type="file"
@@ -178,9 +187,7 @@ function Profile() {
                   Submit your photo
                 </button>
               </form>
-            ) : (
-              <button onClick={InputPicture}>To Input your Photo</button>
-            )}
+            ) : null}
           </div>
         </div>
       </div>

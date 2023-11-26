@@ -23,12 +23,12 @@
 
 .dropdown {
   position: relative;
-  z-index: 999;
+  z-index: 100;
   display: inline-block;
 }
 
 .dropdown-button {
-  background-color: #42ba96;
+  background-color: #ea5200;
   color: #fff;
   border: none;
   padding: 10px;
@@ -39,6 +39,7 @@
   display: none;
   position: absolute;
   background-color: #f9f9f9;
+  z-index: 1000;
   min-width: 140px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
@@ -48,12 +49,60 @@
   text-decoration: none;
   display: block;
   color: #333;
+  z-index: 1000;
 }
 
 .dropdown-content a:hover {
+  z-index: 1000;
   background-color: #ddd;
 }
 
 .dropdown:hover .dropdown-content {
   display: block;
+  z-index: 1000;
+}
+
+.nav-left {
+  margin-left: 2vh;
+}
+
+.nav-right {
+  margin-right: 2vh;
+}
+
+.logo-name {
+  font-weight: bold;
+  transform: translateX(200vh);
+  opacity: 0;
+}
+
+nav.sticky {
+  width: 100%;
+  padding-left: 100px;
+  padding-right: 100px;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+}
+
+.logo-model {
+  top: 0%;
+  width: 10vh;
+  height: min-content;
+  aspect-ratio: 3/4;
+  /* transform: translateX(220vh); */
+}
+
+nav {
+  height: 100px;
+  display: flex;
+  width: 100%;
+  padding-left: 100px;
+  padding-right: 100px;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  transform: translateY(-80px);
+
+  top: 0;
 }

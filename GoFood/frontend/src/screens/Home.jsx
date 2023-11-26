@@ -4,6 +4,7 @@ import Card from "../components/Card";
 import Footer from "../components/Footer";
 import axios from "axios";
 import Describe from "./Describe";
+import { gsap } from "gsap";
 
 export default function Home() {
   const [search, setSearch] = useState("");
@@ -36,11 +37,16 @@ export default function Home() {
           className="carousel slide carousel-fade"
           data-bs-ride="carousel"
         >
-          <div className="carousel-inner" id="carousel">
-            <div style={{ zIndex: "10" }} className="carousel-caption">
+          <div
+            style={{ zIndex: "-1" }}
+            className="carousel-inner"
+            id="carousel"
+          >
+            <div className="carousel-caption">
               <div className="form-inline">
                 <input
-                  className="form-control mr-sm-2"
+                  className="form-control mr-sm-2 search-bar sticky-top"
+                  style={{ border: "3px solid grey" }}
                   type="search"
                   placeholder="Search"
                   aria-label="Search"
@@ -67,7 +73,7 @@ export default function Home() {
             </div>
             <div className="carousel-item">
               <img
-                src="https://media.licdn.com/dms/image/D5612AQHEqHqSwA5Qhg/article-cover_image-shrink_720_1280/0/1664511852088?e=2147483647&v=beta&t=okpiegmz9iPv9XcaKJtoawGZgkudt4mrB29VwaT-_6M"
+                src="https://cdn.pixabay.com/photo/2017/09/16/19/21/salad-2756467_1280.jpg"
                 className="d-block w-100"
                 alt="..."
                 style={{ filter: "brightness(70%)" }}
@@ -109,7 +115,8 @@ export default function Home() {
             return (
               <div className="row mb-3" key={index}>
                 <div className="fs-3 m-3">{data.CategoryName}</div>
-                <hr />
+                <div className="line my-3" />
+
                 {foodItem.length > 0 &&
                   foodItem
                     .filter(
