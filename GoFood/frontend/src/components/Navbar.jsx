@@ -118,25 +118,58 @@ function Navbar(props) {
                 </Link>
 
                 <div className="dropdown">
-                  <button className="dropdown-button" onClick={toggleDropdown}>
-                    <div className="profile-info">
-                      <img src={userProfile.imgUrl} alt={userProfile.name} />
-                      <span>{userProfile.name}</span>
-                    </div>
-                  </button>
+                  <div
+                    className="dropdown-btn profile-info"
+                    onClick={toggleDropdown}
+                  >
+                    <img src={userProfile.imgUrl} alt={userProfile.name} />
+                    <span>{userProfile.name}</span>
+                  </div>
                   {isOpen && (
-                    <div className="dropdown-content">
-                      <Link to="/profile">My Profile</Link>
-                      {localStorage.getItem("Admin") === "true" ? (
-                        <Link to="/admin">Admin</Link>
-                      ) : (
-                        ""
-                      )}
-                      <Link to="/myorder">My Orders</Link>
+                    <div
+                      className="dropdown-content text-center"
+                      style={{
+                        boxShadow: "3px 3px 10px rgba(1, 1, 1.0, 0.5)",
+                      }}
+                    >
+                      <div className="dropdown-items mb-2 mt-2">
+                        <Link
+                          to="/profile"
+                          style={{ color: "black", textDecoration: "none" }}
+                        >
+                          My Profile
+                        </Link>
+                      </div>
 
-                      <Link to="/login" onClick={handleLogout}>
-                        Logout
-                      </Link>
+                      {localStorage.getItem("Admin") === "true" && (
+                        <>
+                          <div className="dropdown-items mb-2 mt-2">
+                            <Link
+                              to="/admin"
+                              style={{ color: "black", textDecoration: "none" }}
+                            >
+                              Admin
+                            </Link>
+                          </div>
+                        </>
+                      )}
+                      <div className="dropdown-items mb-2 mt-2">
+                        <Link
+                          to="/myorder"
+                          style={{ color: "black", textDecoration: "none" }}
+                        >
+                          My Orders
+                        </Link>
+                      </div>
+                      <div className="dropdown-items mb-2 mt-2">
+                        <Link
+                          to="/login"
+                          style={{ color: "black", textDecoration: "none" }}
+                          onClick={handleLogout}
+                        >
+                          Logout
+                        </Link>
+                      </div>
                     </div>
                   )}
                 </div>

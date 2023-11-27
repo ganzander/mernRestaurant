@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
-import "./Login.css";
+import Navbar from "./../components/Navbar";
+import Footer from "./../components/Footer";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -105,128 +106,198 @@ export default function Login() {
 
   if (loginViaPassword) {
     return (
-      <section>
-        <div className="logincard">
-          <h1>Login</h1>
-          <div className="form">
-            <form onSubmit={handlePasswordSubmit}>
-              <span>
-                <input
-                  placeholder="Email"
-                  type="email"
-                  className="input-cll"
-                  name="email"
-                  value={loginCredentials.email}
-                  onChange={onChange}
-                  autoComplete="off"
-                />
-                <i className="fa-solid fa-envelope icon" />
-              </span>
-              <br />
-              <span>
-                <input
-                  type="password"
-                  placeholder="Password"
-                  className="input-cll"
-                  name="password"
-                  value={loginCredentials.password}
-                  onChange={onChange}
-                  autoComplete="off"
-                />
-                <i className="fa-solid fa-envelope icon" />
-              </span>
+      <>
+        <Navbar />
+        <section>
+          <div className="container mt-5">
+            <div className="row">
+              <div className="col-lg-12 col-md-12 col-sm-12">
+                <div className="signupPanel">
+                  <div className="d-flex justify-content-center align-items-center m-3 mt-2">
+                    <h1>Login</h1>
+                  </div>
 
-              <div>
-                <div
-                  className="link"
-                  onClick={() => {
-                    setLoginViaPassword(false);
-                    setLoginViaOTP(true);
-                  }}
-                >
-                  <small className="linkForgotPassword">Forgot Password</small>
+                  <div className="form">
+                    <form onSubmit={handlePasswordSubmit}>
+                      <div className="form-group my-3 mt-3">
+                        <label htmlFor="email">Email</label>
+                        <input
+                          placeholder="Enter your Email"
+                          style={{ border: "3px solid #ecc00e" }}
+                          type="email"
+                          id="email"
+                          className="form-control"
+                          name="email"
+                          value={loginCredentials.email}
+                          onChange={onChange}
+                          autoComplete="off"
+                        />
+                      </div>
+
+                      <div className="form-group my-3 mt-3">
+                        <label htmlFor="password">Password</label>
+                        <input
+                          type="password"
+                          placeholder="Enter your Password"
+                          style={{ border: "3px solid #ecc00e" }}
+                          className="form-control"
+                          name="password"
+                          value={loginCredentials.password}
+                          onChange={onChange}
+                          autoComplete="off"
+                        />
+                      </div>
+
+                      <div
+                        className="d-flex mt-4 justify-content-center align-items-center container link"
+                        onClick={() => {
+                          setLoginViaPassword(false);
+                          setLoginViaOTP(true);
+                        }}
+                      >
+                        <small
+                          className="linkForgotPassword text-center justify-content-center"
+                          style={{ color: "blue", cursor: "pointer" }}
+                        >
+                          Forgot Password
+                        </small>
+                      </div>
+
+                      <div className="d-flex mt-4 justify-content-center align-items-center container">
+                        <button
+                          type="submit"
+                          className="loginbtn btn btn-primary"
+                        >
+                          Login
+                        </button>
+                      </div>
+                      <div className="d-flex mt-4 justify-content-center align-items-center container">
+                        <p className="short-text text-center justify-content-center align-items-center">
+                          Don't have an account?{" "}
+                          <Link to="/createuser" className="reg-link">
+                            Register
+                          </Link>
+                        </p>
+                      </div>
+                    </form>
+                  </div>
                 </div>
               </div>
-              <button type="submit" className="loginbtn">
-                Login
-              </button>
-              <p className="short-text">
-                Don't have an account?{" "}
-                <Link to="/createuser" className="reg-link">
-                  Register
-                </Link>
-              </p>
-            </form>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </>
     );
   } else if (loginViaOTP) {
     return (
-      <section>
-        <div className="logincard">
-          <h1>Password Assistance</h1>
-          <div className="form">
-            <form>
-              <span>
-                <input
-                  type="email"
-                  placeholder="Enter Your Email"
-                  className="input-cll"
-                  name="email"
-                  value={loginCredentials.email}
-                  onChange={onChange}
-                  autoComplete="off"
-                />
-                <i className="fa-solid fa-lock icon" />
-              </span>
-              <button type="button" onClick={sendOTP} className="loginbtn">
-                Send OTP
-              </button>
-              <p className="short-text">
-                Don't have an account?{" "}
-                <Link to="/createuser" className="reg-link">
-                  Register
-                </Link>
-              </p>
-            </form>
+      <>
+        <Navbar />
+        <section>
+          <div className="container mt-5">
+            <div className="row">
+              <div className="col-lg-12 col-md-12 col-sm-12">
+                <div className="logincard">
+                  <div className="d-flex justify-content-center align-items-center m-3 mt-2">
+                    <h1>Password Assistance</h1>
+                  </div>
+                  <div className="form">
+                    <form>
+                      <div className="form-group my-3 mt-3">
+                        <label htmlFor="email">Email</label>
+                        <input
+                          style={{ border: "3px solid #ecc00e" }}
+                          type="email"
+                          id="email"
+                          placeholder="Enter Your Email"
+                          className="form-control"
+                          name="email"
+                          value={loginCredentials.email}
+                          onChange={onChange}
+                          autoComplete="off"
+                        />
+                      </div>
+                      <div className="d-flex mt-4 justify-content-center align-items-center container">
+                        <button
+                          type="button"
+                          onClick={sendOTP}
+                          className="loginbtn btn btn-primary"
+                        >
+                          Send OTP
+                        </button>
+                      </div>
+                      <div className="d-flex mt-4 justify-content-center align-items-center container">
+                        <p className="short-text text-center justify-content-center align-items-center">
+                          Don't have an account?{" "}
+                          <Link to="/createuser" className="reg-link">
+                            Register
+                          </Link>
+                        </p>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </>
     );
   } else if (enterOTP) {
     return (
-      <section>
-        <div className="logincard">
-          <h1>Verification Required</h1>
-          <form onSubmit={verifyOTP}>
-            <span>
-              <input
-                type="text"
-                className="input-cll"
-                placeholder="Enter the OTP"
-                name="otp"
-                value={otp}
-                onChange={onOTPChange}
-                autoComplete="off"
-              />
-              <i className="fa-solid fa-envelope icon" />
-            </span>
-            <button type="submit" className="loginbtn">
-              Verify OTP
-            </button>
-            <button type="button" onClick={sendOTP} className="loginbtn">
-              Resend OTP
-            </button>
-            <p className="short-text">
-              Don't have an account?{" "}
-              <Link to="/createuser" className="reg-link">
-                Register
-              </Link>
-            </p>
-          </form>
-        </div>
-      </section>
+      <>
+        <Navbar />
+        <section>
+          <div className="container mt-5">
+            <div className="row">
+              <div className="col-lg-12 col-md-12 col-sm-12">
+                <div className="logincard">
+                  <div className="d-flex justify-content-center align-items-center m-3 mt-2">
+                    <h1>Verification Required</h1>
+                  </div>
+                  <form onSubmit={verifyOTP}>
+                    <div className="form-group my-3 mt-3">
+                      <label htmlFor="otp">OTP</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Enter the OTP"
+                        name="otp"
+                        id="otp"
+                        value={otp}
+                        onChange={onOTPChange}
+                        autoComplete="off"
+                      />
+                    </div>
+                    <div className="d-flex mt-4 justify-content-center align-items-center container">
+                      <button
+                        type="submit"
+                        className="loginbtn btn btn-primary "
+                      >
+                        Verify OTP
+                      </button>
+                      <button
+                        type="button"
+                        onClick={sendOTP}
+                        className="loginbtn btn btn-primary"
+                      >
+                        Resend OTP
+                      </button>
+                    </div>
+                    <div className="d-flex mt-4 justify-content-center align-items-center container">
+                      <p className="short-text text-center justify-content-center align-items-center">
+                        Don't have an account?{" "}
+                        <Link to="/createuser" className="reg-link">
+                          Register
+                        </Link>
+                      </p>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </>
     );
   }
 }
